@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rowan Vale — Cinematic Video Editor | Story-Driven Editing</title>
+<meta name="description" content="Rowan Vale is a professional video editor specializing in cinematic storytelling — YouTube, commercials, documentaries, and motion graphics. Turning ideas into cinematic stories.">
+<meta name="keywords" content="video editor, cinematic editing, youtube editor, colorist, motion graphics, video editing portfolio">
+<meta property="og:title" content="Rowan Vale — Cinematic Video Editor">
+<meta property="og:description" content="Turning Ideas into Cinematic Stories. Premium video editing for creators & brands.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOADER ================= -->
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-inner">
+    <svg class="loader-logo" viewBox="0 0 120 120" width="90" height="90">
+      <circle class="loader-ring" cx="60" cy="60" r="52" fill="none" stroke="#c9a24b" stroke-width="1"/>
+      <path class="loader-mark" d="M40 34 L86 60 L40 86 Z" fill="none" stroke="#c9a24b" stroke-width="2"/>
+    </svg>
+    <div class="loader-text">
+      <span>R</span><span>O</span><span>W</span><span>A</span><span>N</span>&nbsp;<span>V</span><span>A</span><span>L</span><span>E</span>
+    </div>
+    <div class="loader-bar"><div class="loader-bar-fill" id="loaderFill"></div></div>
+    <div class="loader-pct" id="loaderPct">00%</div>
+  </div>
+</div>
+
+<!-- ================= CUSTOM CURSOR ================= -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ================= SCROLL PROGRESS ================= -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ================= NAV ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="nav-wrap">
+    <a href="#hero" class="logo" data-cursor="link">
+      <span class="logo-mark">RV</span>
+      <span class="logo-full">Rowan&nbsp;Vale</span>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#about" data-cursor="link"><span class="nav-num">01</span>About</a>
+      <a href="#services" data-cursor="link"><span class="nav-num">02</span>Services</a>
+      <a href="#portfolio" data-cursor="link"><span class="nav-num">03</span>Work</a>
+      <a href="#testimonials" data-cursor="link"><span class="nav-num">04</span>Clients</a>
+      <a href="#pricing" data-cursor="link"><span class="nav-num">05</span>Pricing</a>
+      <a href="#contact" class="nav-cta" data-cursor="link">Start a Project</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="hero">
+  <div class="hero-media">
+    <video class="hero-video" autoplay muted loop playsinline poster="">
+      <source src="https://cdn.coverr.co/videos/coverr-editing-video-on-a-computer-2633/1080p.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-grain"></div>
+  </div>
+
+  <div class="viewfinder" aria-hidden="true">
+    <span class="vf-corner tl"></span><span class="vf-corner tr"></span>
+    <span class="vf-corner bl"></span><span class="vf-corner br"></span>
+    <span class="vf-tc vf-tc-left">REC ● 00:00:04:12</span>
+    <span class="vf-tc vf-tc-right">24.000 FPS — ARRI LOG</span>
+  </div>
+
+  <div class="hero-content">
+    <p class="eyebrow reveal-line"><span>Film & Content Editor — Est. 2016</span></p>
+    <h1 class="hero-title">
+      <span class="line" data-line>Turning Ideas</span>
+      <span class="line" data-line>into <em>Cinematic</em></span>
+      <span class="line" data-line>Stories.</span>
+    </h1>
+    <p class="hero-sub reveal-line"><span>I cut, grade, and score footage into stories that hold attention and drive results — for creators, brands, and studios worldwide.</span></p>
+    <div class="hero-actions reveal-line">
+      <span>
+      <button class="btn btn-outline" id="showreelBtn" data-cursor="link">
+        <i class="fa-solid fa-play"></i> Watch Showreel
+      </button>
+      <a href="#contact" class="btn btn-solid" data-cursor="link">
+        Hire Me <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      </span>
+    </div>
+  </div>
+
+  <div class="hero-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="scroll-line"><div class="scroll-line-fill"></div></div>
+  </div>
+</section>
+
+<!-- Showreel Modal -->
+<div class="modal" id="showreelModal" aria-hidden="true">
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose" aria-label="Close" data-cursor="link"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-video">
+      <iframe id="showreelFrame" width="100%" height="100%" src="" title="Showreel" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ================= MARQUEE STRIP ================= -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>YOUTUBE</span><span>·</span><span>DOCUMENTARY</span><span>·</span><span>COMMERCIAL</span><span>·</span><span>MOTION GRAPHICS</span><span>·</span><span>COLOR GRADE</span><span>·</span><span>SOUND DESIGN</span><span>·</span>
+    <span>YOUTUBE</span><span>·</span><span>DOCUMENTARY</span><span>·</span><span>COMMERCIAL</span><span>·</span><span>MOTION GRAPHICS</span><span>·</span><span>COLOR GRADE</span><span>·</span><span>SOUND DESIGN</span><span>·</span>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section class="section about" id="about">
+  <div class="container about-grid">
+    <div class="about-media" data-parallax>
+      <div class="about-frame">
+        <img src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?q=80&w=1000&auto=format&fit=crop" alt="Rowan Vale, video editor, working at a color grading suite" loading="lazy">
+        <div class="frame-tc">DP: R.VALE — SCENE 07 / TAKE 02</div>
+      </div>
+      <div class="about-stat-badge glass">
+        <strong>9+</strong>
+        <span>Years Cutting Story</span>
+      </div>
+    </div>
+
+    <div class="about-copy">
+      <p class="eyebrow"><span class="tc-num">01</span> About</p>
+      <h2 class="section-title">I don't just edit footage.<br>I <em>edit attention.</em></h2>
+      <p class="about-lead">Based between Los Angeles and remote, I've spent the last nine years in the timeline — cutting for creators who needed their first viral hit and brands who needed their next campaign to actually convert.</p>
+      <p class="about-text">My style leans rhythmic and restrained: cuts that breathe with the music, color that feels shot-on-film even when it wasn't, and sound design that does half the emotional work before the audience notices. No templates, no stock transitions — every project gets a bespoke edit built around its own pacing.</p>
+
+      <div class="skill-bars">
+        <div class="skill-row">
+          <span class="skill-label">Narrative Pacing</span>
+          <div class="skill-track"><div class="skill-fill" data-fill="96"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Color Grading</span>
+          <div class="skill-track"><div class="skill-fill" data-fill="92"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Sound Design</span>
+          <div class="skill-track"><div class="skill-fill" data-fill="88"></div></div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-label">Motion Graphics</span>
+          <div class="skill-track"><div class="skill-fill" data-fill="85"></div></div>
+        </div>
+      </div>
+
+      <div class="software-row">
+        <span class="software-label">Suite</span>
+        <div class="software-icons">
+          <span class="soft-pill" title="Adobe Premiere Pro"><i class="fa-solid fa-film"></i> Premiere Pro</span>
+          <span class="soft-pill" title="DaVinci Resolve"><i class="fa-solid fa-sliders"></i> DaVinci Resolve</span>
+          <span class="soft-pill" title="After Effects"><i class="fa-solid fa-layer-group"></i> After Effects</span>
+          <span class="soft-pill" title="Avid Media Composer"><i class="fa-solid fa-clapperboard"></i> Avid MC</span>
+          <span class="soft-pill" title="Adobe Audition"><i class="fa-solid fa-waveform-lines"></i> Audition</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section class="section services" id="services">
+  <div class="container">
+    <p class="eyebrow center"><span class="tc-num">02</span> Services</p>
+    <h2 class="section-title center">One editor.<br>Every format that <em>needs a story.</em></h2>
+
+    <div class="services-grid">
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">01</span>
+        <i class="fa-brands fa-youtube service-icon"></i>
+        <h3>YouTube Editing</h3>
+        <p>Retention-driven cuts, pattern interrupts, and thumbnail-ready hooks built for the algorithm and the audience.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">02</span>
+        <i class="fa-solid fa-mobile-screen service-icon"></i>
+        <h3>Reels & Shorts</h3>
+        <p>Fast, punchy vertical edits engineered for the first three seconds — built to stop the scroll.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">03</span>
+        <i class="fa-solid fa-gamepad service-icon"></i>
+        <h3>Gaming Videos</h3>
+        <p>Highlight reels, montages, and stream recaps with kinetic captions and synced sound design.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">04</span>
+        <i class="fa-solid fa-bullhorn service-icon"></i>
+        <h3>Ads & Commercials</h3>
+        <p>Conversion-focused edits for paid social and broadcast — clear message, strong CTA, on-brand tone.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">05</span>
+        <i class="fa-solid fa-video service-icon"></i>
+        <h3>Documentary</h3>
+        <p>Long-form narrative structure, interview weaving, and pacing that respects the story being told.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">06</span>
+        <i class="fa-solid fa-building service-icon"></i>
+        <h3>Corporate Video</h3>
+        <p>Polished internal and external comms — training, brand films, and executive content that feels premium.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">07</span>
+        <i class="fa-solid fa-shapes service-icon"></i>
+        <h3>Motion Graphics</h3>
+        <p>Custom lower-thirds, titles, and animated infographics that elevate footage without distracting from it.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">08</span>
+        <i class="fa-solid fa-palette service-icon"></i>
+        <h3>Color Grading</h3>
+        <p>Cinematic LUT-based grades tailored per project — mood, skin tones, and consistency shot to shot.</p>
+      </div>
+      <div class="service-card glass" data-tilt>
+        <span class="service-index">09</span>
+        <i class="fa-solid fa-headphones service-icon"></i>
+        <h3>Sound Design</h3>
+        <p>Foley, ambience, mixing, and score selection that makes the picture feel three-dimensional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section class="section portfolio" id="portfolio">
+  <div class="container">
+    <p class="eyebrow center"><span class="tc-num">03</span> Selected Work</p>
+    <h2 class="section-title center">A reel is worth<br><em>a thousand pitch decks.</em></h2>
+
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All Work</button>
+      <button class="filter-btn" data-filter="youtube">YouTube</button>
+      <button class="filter-btn" data-filter="shorts">Shorts</button>
+      <button class="filter-btn" data-filter="commercial">Commercial</button>
+      <button class="filter-btn" data-filter="documentary">Documentary</button>
+      <button class="filter-btn" data-filter="motion">Motion Graphics</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolioGrid">
+      <div class="port-card" data-cat="youtube">
+        <div class="port-embed">
+          <iframe src="https://www.youtube.com/embed/aqz-KE-bpKQ" title="Big Buck Bunny Trailer" loading="lazy" allow="fullscreen" frameborder="0"></iframe>
+        </div>
+        <div class="port-meta">
+          <h4>Midnight Runners — Docu-Series Trailer</h4>
+          <span class="port-tag">YouTube · Narrative Cut</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="commercial">
+        <div class="port-embed">
+          <iframe src="https://player.vimeo.com/video/76979871" title="Commercial Reel" loading="lazy" allow="fullscreen" frameborder="0"></iframe>
+        </div>
+        <div class="port-meta">
+          <h4>Solstice Watches — Brand Film</h4>
+          <span class="port-tag">Commercial · Color Grade</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="shorts">
+        <div class="port-embed">
+          <iframe src="https://www.youtube.com/embed/YE7VzlLtp-4" title="Vertical Short" loading="lazy" allow="fullscreen" frameborder="0"></iframe>
+        </div>
+        <div class="port-meta">
+          <h4>Studio Sessions — Reel Cutdown</h4>
+          <span class="port-tag">Shorts · Sound Design</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="documentary">
+        <div class="port-embed">
+          <iframe src="https://player.vimeo.com/video/22439234" title="Documentary Feature" loading="lazy" allow="fullscreen" frameborder="0"></iframe>
+        </div>
+        <div class="port-meta">
+          <h4>Concrete Coastlines — Feature Doc</h4>
+          <span class="port-tag">Documentary · Long-Form</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="motion">
+        <div class="port-embed">
+          <iframe src="https://www.youtube.com/embed/TG5wOgzWmWA" title="Motion Graphics Reel" loading="lazy" allow="fullscreen" frameborder="0"></iframe>
+        </div>
+        <div class="port-meta">
+          <h4>Nova Finance — Explainer Titles</h4>
+          <span class="port-tag">Motion Graphics · Branding</span>
+        </div>
+      </div>
+      <div class="port-card" data-cat="youtube">
+        <div class="port-embed">
+          <iframe src="https://www.youtube.com/embed/hFZFjoX2cGg" title="YouTube Vlog Edit" loading="lazy" allow="fullscreen" frameborder="0"></iframe>
+        </div>
+        <div class="port-meta">
+          <h4>Field Notes — Travel Vlog Series</h4>
+          <span class="port-tag">YouTube · Retention Cut</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BEFORE / AFTER ================= -->
+<section class="section before-after">
+  <div class="container">
+    <p class="eyebrow center"><span class="tc-num">—</span> The Difference</p>
+    <h2 class="section-title center">Raw footage.<br><em>Graded reality.</em></h2>
+    <p class="ba-sub center">Drag the handle to see a straight-off-the-camera log clip against the final cinematic grade.</p>
+
+    <div class="ba-slider" id="baSlider">
+      <div class="ba-frame">
+        <img class="ba-after" src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?q=80&w=1400&auto=format&fit=crop" alt="Color graded cinematic mountain landscape, final version">
+        <div class="ba-before-wrap" id="baBeforeWrap">
+          <img class="ba-before" src="https://images.unsplash.com/photo-1500462918059-b1a0cb512f1d?q=80&w=1400&auto=format&fit=crop&sat=-100&con=-20" alt="Flat, ungraded raw footage of mountain landscape, before version">
+        </div>
+        <div class="ba-tag ba-tag-left">BEFORE — LOG</div>
+        <div class="ba-tag ba-tag-right">AFTER — GRADED</div>
+        <div class="ba-handle" id="baHandle">
+          <i class="fa-solid fa-left-right"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="section stats">
+  <div class="container stats-grid">
+    <div class="stat-item">
+      <span class="stat-num" data-count="480">0</span><span class="stat-plus">+</span>
+      <p>Projects Completed</p>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="250">0</span><span class="stat-plus">M+</span>
+      <p>Views Generated</p>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="190">0</span><span class="stat-plus">+</span>
+      <p>Happy Clients</p>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" data-count="9">0</span><span class="stat-plus">+</span>
+      <p>Years of Experience</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="section testimonials" id="testimonials">
+  <div class="container">
+    <p class="eyebrow center"><span class="tc-num">04</span> Clients</p>
+    <h2 class="section-title center">Words from people<br><em>who trusted the timeline.</em></h2>
+
+    <div class="swiper testimonial-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="testi-card glass">
+            <div class="stars">★★★★★</div>
+            <p>"Rowan turned six hours of raw stream footage into a montage that got more views than the actual stream. He understands pacing on a level most editors just don't."</p>
+            <div class="testi-person">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Marcus Cole" loading="lazy">
+              <div><strong>Marcus Cole</strong><span>Twitch Partner, 400K subs</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testi-card glass">
+            <div class="stars">★★★★★</div>
+            <p>"We hired Rowan for a brand documentary and he delivered something closer to a festival short than a corporate video. Worth every dollar."</p>
+            <div class="testi-person">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Elena Marsh" loading="lazy">
+              <div><strong>Elena Marsh</strong><span>Creative Director, Solstice Co.</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testi-card glass">
+            <div class="stars">★★★★★</div>
+            <p>"Fast turnaround, flawless color grade, and he actually pushes back on ideas that won't work. That honesty is rare and valuable."</p>
+            <div class="testi-person">
+              <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Devon Ashworth" loading="lazy">
+              <div><strong>Devon Ashworth</strong><span>YouTuber, 1.2M subs</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="testi-card glass">
+            <div class="stars">★★★★★</div>
+            <p>"Our ad's CTR doubled after Rowan re-cut it. He knows exactly where attention drops and how to fix it without losing the message."</p>
+            <div class="testi-person">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Nandan" loading="lazy">
+              <div><strong>Priya Nandan</strong><span>Growth Lead, Nova Finance</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRICING ================= -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <p class="eyebrow center"><span class="tc-num">05</span> Investment</p>
+    <h2 class="section-title center">Packages built around<br><em>outcomes, not hours.</em></h2>
+
+    <div class="pricing-grid">
+      <div class="price-card glass">
+        <h3>Basic</h3>
+        <p class="price-desc">Short-form content for creators who need consistent, clean edits.</p>
+        <div class="price-tag"><span class="price-currency">$</span>500<span class="price-period">/ project</span></div>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-check"></i> Up to 5 min final runtime</li>
+          <li><i class="fa-solid fa-check"></i> Basic color correction</li>
+          <li><i class="fa-solid fa-check"></i> Captions & simple titles</li>
+          <li><i class="fa-solid fa-check"></i> 2 rounds of revisions</li>
+          <li><i class="fa-solid fa-check"></i> 5-day turnaround</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline full">Get Started</a>
+      </div>
+
+      <div class="price-card glass featured">
+        <span class="price-badge">Most Popular</span>
+        <h3>Pro</h3>
+        <p class="price-desc">Full-service editing for brands and creators scaling their content.</p>
+        <div class="price-tag"><span class="price-currency">$</span>1,800<span class="price-period">/ project</span></div>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-check"></i> Up to 15 min final runtime</li>
+          <li><i class="fa-solid fa-check"></i> Cinematic color grading</li>
+          <li><i class="fa-solid fa-check"></i> Custom motion graphics</li>
+          <li><i class="fa-solid fa-check"></i> Full sound design & mix</li>
+          <li><i class="fa-solid fa-check"></i> 4 rounds of revisions</li>
+          <li><i class="fa-solid fa-check"></i> 3-day turnaround</li>
+        </ul>
+        <a href="#contact" class="btn btn-solid full">Get Started</a>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Premium</h3>
+        <p class="price-desc">End-to-end production for documentaries, campaigns & series.</p>
+        <div class="price-tag"><span class="price-currency">$</span>5,000<span class="price-period">+ / project</span></div>
+        <ul class="price-features">
+          <li><i class="fa-solid fa-check"></i> Unlimited runtime</li>
+          <li><i class="fa-solid fa-check"></i> Multi-cam & archival editing</li>
+          <li><i class="fa-solid fa-check"></i> Full VFX & motion suite</li>
+          <li><i class="fa-solid fa-check"></i> Original score sourcing</li>
+          <li><i class="fa-solid fa-check"></i> Unlimited revisions</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated project manager</li>
+        </ul>
+        <a href="#contact" class="btn btn-outline full">Book a Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="section faq" id="faq">
+  <div class="container faq-grid">
+    <div class="faq-intro">
+      <p class="eyebrow"><span class="tc-num">06</span> FAQ</p>
+      <h2 class="section-title">Questions before<br><em>you press record.</em></h2>
+      <p class="about-text">Can't find what you're looking for? Reach out directly and I'll get back within 24 hours.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What's your typical turnaround time?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-a"><p>Most short-form projects are delivered in 3–5 business days. Larger documentary or commercial projects typically run 2–4 weeks depending on scope and revision rounds.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Do you work with raw footage or do I need proxies?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-a"><p>I work directly with raw camera footage (RAW, LOG, ProRes, H.264/265). For very large 8K or RED projects, I'll generate proxies on my end — no extra prep needed from you.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>How many revisions are included?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-a"><p>Each package includes a set number of revision rounds, shown in the pricing above. Additional rounds are billed hourly and always quoted before I start.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>Can you help with scripting or storyboarding too?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-a"><p>Yes — for Premium projects I can consult on structure and pacing before you shoot, which usually saves significant time and cost in the edit.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span>What file formats do you deliver?</span>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="faq-a"><p>Standard delivery is a mastered H.264 or ProRes file at your target resolution and frame rate, plus platform-specific exports (YouTube, vertical, broadcast) on request.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="section contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-intro">
+      <p class="eyebrow"><span class="tc-num">07</span> Contact</p>
+      <h2 class="section-title">Let's cut something<br><em>worth watching.</em></h2>
+      <p class="about-text">Tell me about your project — timeline, footage, and vision — and I'll reply with next steps and availability within one business day.</p>
+
+      <div class="contact-links">
+        <a href="mailto:hello@rowanvale.studio" class="contact-link" data-cursor="link">
+          <i class="fa-solid fa-envelope"></i>
+          <div><strong>Email</strong><span>hello@rowanvale.studio</span></div>
+        </a>
+        <a href="https://wa.me/10000000000" target="_blank" rel="noopener" class="contact-link" data-cursor="link">
+          <i class="fa-brands fa-whatsapp"></i>
+          <div><strong>WhatsApp</strong><span>Quick response, project quotes</span></div>
+        </a>
+        <a href="https://instagram.com/" target="_blank" rel="noopener" class="contact-link" data-cursor="link">
+          <i class="fa-brands fa-instagram"></i>
+          <div><strong>Instagram</strong><span>@rowanvale.edits</span></div>
+        </a>
+        <a href="https://linkedin.com/" target="_blank" rel="noopener" class="contact-link" data-cursor="link">
+          <i class="fa-brands fa-linkedin"></i>
+          <div><strong>LinkedIn</strong><span>/in/rowanvale</span></div>
+        </a>
+        <a href="https://discord.com/" target="_blank" rel="noopener" class="contact-link" data-cursor="link">
+          <i class="fa-brands fa-discord"></i>
+          <div><strong>Discord</strong><span>rowanvale#0001</span></div>
+        </a>
+      </div>
+    </div>
+
+    <form class="contact-form glass" id="contactForm">
+      <div class="form-row">
+        <label>Name
+          <input type="text" name="name" required placeholder="Your name">
+        </label>
+        <label>Email
+          <input type="email" name="email" required placeholder="you@company.com">
+        </label>
+      </div>
+      <label>Project Type
+        <select name="project-type">
+          <option>YouTube Editing</option>
+          <option>Reels & Shorts</option>
+          <option>Commercial / Ad</option>
+          <option>Documentary</option>
+          <option>Corporate Video</option>
+          <option>Other</option>
+        </select>
+      </label>
+      <label>Budget Range
+        <select name="budget">
+          <option>$500 – $1,000</option>
+          <option>$1,000 – $3,000</option>
+          <option>$3,000 – $5,000</option>
+          <option>$5,000+</option>
+        </select>
+      </label>
+      <label>Project Details
+        <textarea name="message" rows="4" required placeholder="Tell me about your footage, timeline, and vision..."></textarea>
+      </label>
+      <button type="submit" class="btn btn-solid full">
+        Send Project Inquiry <i class="fa-solid fa-arrow-right"></i>
+      </button>
+      <p class="form-note" id="formNote"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <span class="logo-mark">RV</span>
+      <p>Rowan Vale — Cinematic video editor turning raw footage into stories that convert.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Work</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <a href="https://instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+      <a href="https://discord.com/" target="_blank" rel="noopener" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+      <a href="https://wa.me/10000000000" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; <span id="year"></span> Rowan Vale. All rights reserved.</p>
+    <p class="footer-tc">TIMECODE 00:00:00:00 — END OF REEL</p>
+  </div>
+</footer>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/10000000000" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat on WhatsApp" data-cursor="link">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
